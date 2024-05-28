@@ -33,6 +33,11 @@ public class Student {
     @Setter
     private String email;
 
+    @Setter
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
+
     @Column
     private boolean status;
 
