@@ -26,5 +26,9 @@ public interface StudentRepository extends JpaRepository<Student, String> {
 
     Student findByEmailIgnoreCase(String email);
 
+    //Find Student by City
+    //select * from student s join address a on s.address_id = a.id where a.city = 'city';
+    List<Student> findByAddress_CityIgnoreCase(String city);
+
 
 }

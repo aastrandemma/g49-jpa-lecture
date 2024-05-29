@@ -16,6 +16,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        studentRepository.save(new Student("john","doe","john@gmail.com"));
 
     }
 }
