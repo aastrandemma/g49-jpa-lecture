@@ -19,6 +19,7 @@ public class Student {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(updatable = false)
     private String id;
 
     @Column(nullable = false, length = 100)
@@ -34,9 +35,14 @@ public class Student {
     private String email;
 
     @Setter
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id")
     private Address address;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id")
+    @Setter
+    private Course course;
 
     @Column
     private boolean status;
@@ -48,6 +54,15 @@ public class Student {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.status = true;
+        this.createDate = LocalDateTime.now();
+    }
+
+    public Student(String firstName, String lastName, String email, Address address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
         this.status = true;
         this.createDate = LocalDateTime.now();
     }
