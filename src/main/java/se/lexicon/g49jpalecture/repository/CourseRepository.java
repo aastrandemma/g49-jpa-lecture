@@ -3,10 +3,12 @@ package se.lexicon.g49jpalecture.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import se.lexicon.g49jpalecture.entity.Course;
 
 import java.util.List;
 
+@Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {
 
     //find course by instructor id
